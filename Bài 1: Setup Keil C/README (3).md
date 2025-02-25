@@ -7,15 +7,22 @@
 - Cài đặt thư viện chuẩn của STM32F103c8t6 cho keil: https://www.keil.arm.com/devices/
 2. Tạo project đầu tiên:
 - Trong mục Keil C, chọn Project, tạo một proeject mới và chọn dòng vi điều khiển mà bạn muốn sử dụng
+<img width="960" alt="Screenshot 2025-02-25 113623" src="https://github.com/user-attachments/assets/d506fc90-d2c6-4b0b-aae9-1a64ee147057" />
 
-- Nhấn OK, chọn thư viện cần thiết, ở đây là Startup
+- Nhấn OK, chọn thư viện cần thiết
+<img width="960" alt="Screenshot 2025-02-25 223634" src="https://github.com/user-attachments/assets/f3e3d7a7-8e89-4b16-ab5b-9e1b5c679118" />
 
 - Tạo file main.c và add vào Source group
+<img width="960" alt="Screenshot 2025-02-25 114656" src="https://github.com/user-attachments/assets/bd26d412-62aa-448d-9e0d-06b8b87306df" />
 
 ##  Blink Led
 1. Cấu hình clock
 - Trước khi cấu hình hoạt động của ngoại vi, chúng ta cần cấu hình xung clock thông qua bus.
+  ![image](https://github.com/user-attachments/assets/aecf826d-4343-4ed8-8598-13c8598df8a8)
+
 - GPIOC cung cấp clock thông qua bus APB2.
+  ![image](https://github.com/user-attachments/assets/8708b389-a6d9-4a45-90fb-1cc9590c6b74)
+
 - Định nghĩa cho thanh ghi RCC_APB2ENR 
 ```
 #define RCC->APB2ENR *((unsigned int*)0x40021018)
