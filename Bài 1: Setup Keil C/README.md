@@ -70,7 +70,10 @@ Delay(1000000);
 ```
 ## Button Led
 - Cấp clock cho GPIOA để cấu hình làm nút nhấn ` RCC->APB2ENR |= (1<<2)| (1<<4);`
-- Cấu hình chân PA0 làm Input pull up
+- Cấu hình chế độ chân cho PA0 pull-up (nút nhấn, tín hiệu đọc được là LOW) hoặc pull-down( nút nhấn, tín hiệu đọc được là HIGH)
+  ![image](https://github.com/user-attachments/assets/4edb2a12-e446-4e29-9505-f58ebcfcf507)
+
+- Ta sẽ cấu hình chân PA0 làm Input pull up
 ```
 GPIOA->CRL &= ~((1<<0) |(1<<1)|(1<<2));
 GPIOA->CRL |= (1<<3);
