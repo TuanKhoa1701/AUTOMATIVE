@@ -21,7 +21,7 @@
   ![image](https://github.com/user-attachments/assets/aecf826d-4343-4ed8-8598-13c8598df8a8)
 
 - GPIOC cung cấp clock thông qua bus APB2.
-  ![image](https://github.com/user-attachments/assets/8708b389-a6d9-4a45-90fb-1cc9590c6b74)
+ ![image](https://github.com/user-attachments/assets/88e226ac-ed10-4999-aa30-bf2703ce4ca4)
 
 - Định nghĩa cho thanh ghi RCC_APB2ENR 
 ```
@@ -35,10 +35,15 @@ RCC->APB2ENR |= (1<<4);
 - Xác định và cấu hình chân trong thanh ghi Port configuration register, trong đó bao gồm:
 
     a.CRL: cấu hình chân từ 0-7 trong Portx
+![image](https://github.com/user-attachments/assets/91753e8e-c065-40cc-9e9a-3f919e86a81a)
 
     b.CRH: cấu hình chân từ 8-15 trong Portx
+![image](https://github.com/user-attachments/assets/be7b292d-e046-4358-962f-ba7b18c1b147)
 
 - Các cặp bit như CNFy và MODEy xác định thông số và chế độ hoạt động
+  
+  ![image](https://github.com/user-attachments/assets/ca93551a-6430-4656-9cac-714f095f963e)
+
 - Để blink Led trên PortC 13, ta sẽ sử dụng thanh ghi CRH, định nghĩa thanh ghi GPIOC_CRH
 `#define GPIOC->CRH *((unsigned int*)0x40021004)` 
 - Ta sẽ set cặp bit CNF13 xuống 0 và MODE13 lên 1.
