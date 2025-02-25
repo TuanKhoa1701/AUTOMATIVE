@@ -36,7 +36,8 @@ RCC->APB2ENR |= (1<<4);
 
     a.CRL: cấu hình chân từ 0-7 trong Portx
   
-![image](https://github.com/user-attachments/assets/91753e8e-c065-40cc-9e9a-3f919e86a81a)
+![image](https://github.com/user-attachments/assets/f42dc85a-d845-4e3e-8a34-1101f85f2eb3)
+
     b.CRH: cấu hình chân từ 8-15 trong Portx
 ![image](https://github.com/user-attachments/assets/0df08bb5-188c-4b9b-b31b-0fe1d4707f4e)
 
