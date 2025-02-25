@@ -1,0 +1,76 @@
+
+# Lesson 1: Setup Keil C
+## Keil C
+1. Tải Keil C
+- Cài đặt Keil C về máy :https://www.keil.com/download/
+- Cài đặt ST-link driver để nạp và debug:  https://www.keil.com/download/ 
+- Cài đặt thư viện chuẩn của STM32F103c8t6 cho keil: https://www.keil.arm.com/devices/
+2. Tạo project đầu tiên:
+- Trong mục Keil C, chọn Project, tạo một proeject mới và chọn dòng vi điều khiển mà bạn muốn sử dụng
+
+- Nhấn OK, chọn thư viện cần thiết, ở đây là Startup
+
+- Tạo file main.c và add vào Source group
+
+##  Blink Led
+1. Cấu hình clock
+- Trước khi cấu hình hoạt động của ngoại vi, chúng ta cần cấu hình xung clock thông qua bus.
+- GPIOC cung cấp clock thông qua bus APB2.
+- Định nghĩa cho thanh ghi RCC_APB2ENR 
+```
+#define RCC->APB2ENR *((unsigned int*)0x40021018)
+```
+- Set bit IOPCEN lên 1 để cấp clock cho GPIOC.
+```
+RCC->APB2ENR |= (1<<4);
+```
+2. Cấu hình chế độ hoạt động
+- Xác định và cấu hình chân trong thanh ghi Port configuration register, trong đó bao gồm:
+
+    a.CRL: cấu hình chân từ 0-7 trong Portx
+
+    b.CRH: cấu hình chân từ 8-15 trong Portx
+
+- Các cặp bit như CNFy và MODEy xác định thông số và chế độ hoạt động
+- Để blink Led trên PortC 13, ta sẽ sử dụng thanh ghi CRH, định nghĩa thanh ghi GPIOC_CRH
+`#define GPIOC->CRH *((unsigned int*)0x40021004)` 
+- Ta sẽ set cặp bit CNF13 xuống 0 và MODE13 lên 1.
+```
+GPIOC->CRH &= ~((1<<23) | (1<<22));
+GPIOC->CRH |= ((1<<21) | (1<<20));
+```
+- Hàm delay tự tạo 
+```
+void Delay(unsigned int time)
+{
+    for(int i=0; i< time;i++){}
+}
+```
+- Kết hợp hàm delay ở trên, sử dụng thanh ghi Port output data register (GPIOx_ODR) để ghi giá trị lên PC13 
+```
+#define GPIOC->ODR *((unsigned int*)0x4002100C)
+
+GPIOC->ODR |= (1<<13);
+Delay(1000000);
+GPIOC->ODR &= ~(1<<13);
+Delay(1000000);
+```
+## Button Led
+- Cấp clock cho GPIOA để cấu hình làm nút nhấn ` RCC->APB2ENR |= (1<<2)| (1<<4);`
+- Cấu hình chân PA0 làm Input pull up
+```
+GPIOA->CRL &= ~((1<<0) |(1<<1)|(1<<2));
+GPIOA->CRL |= (1<<3);
+GPIOA->ODR |= 1;
+```
+- Đọc thanh ghi GPIOA->IDR để điều khiển Led
+```
+if(GPIOA->IDR & (1<<0)==0)
+{
+    GPIOA->ODR = 0 << 13;
+}
+else
+{
+    GPIOA->ODR = 1 << 13;
+}
+```
