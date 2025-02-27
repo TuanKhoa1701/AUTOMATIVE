@@ -25,11 +25,11 @@
 
 - Định nghĩa cho thanh ghi RCC_APB2ENR 
 ```
-#define RCC->APB2ENR *((unsigned int*)0x40021018)
+#define RCC_APB2ENR *((unsigned int*)0x40021018)
 ```
 - Set bit IOPCEN lên 1 để cấp clock cho GPIOC.
 ```
-RCC->APB2ENR |= (1<<4);
+RCC_APB2ENR |= (1<<4);
 ```
 2. Cấu hình chế độ hoạt động
 - Xác định và cấu hình chân trong thanh ghi Port configuration register, trong đó bao gồm:
@@ -46,11 +46,11 @@ RCC->APB2ENR |= (1<<4);
   ![image](https://github.com/user-attachments/assets/ca93551a-6430-4656-9cac-714f095f963e)
 
 - Để blink Led trên PortC 13, ta sẽ sử dụng thanh ghi CRH, định nghĩa thanh ghi GPIOC_CRH
-`#define GPIOC->CRH *((unsigned int*)0x40021004)` 
+`#define GPIOC_CRH *((unsigned int*)0x40021004)` 
 - Ta sẽ set cặp bit CNF13 xuống 0 và MODE13 lên 1.
 ```
-GPIOC->CRH &= ~((1<<23) | (1<<22));
-GPIOC->CRH |= ((1<<21) | (1<<20));
+GPIOC_CRH &= ~((1<<23) | (1<<22));
+GPIOC_CRH |= ((1<<21) | (1<<20));
 ```
 - Hàm delay tự tạo 
 ```
@@ -61,11 +61,11 @@ void Delay(unsigned int time)
 ```
 - Kết hợp hàm delay ở trên, sử dụng thanh ghi Port output data register (GPIOx_ODR) để ghi giá trị lên PC13 
 ```
-#define GPIOC->ODR *((unsigned int*)0x4002100C)
+#define GPIOC_ODR *((unsigned int*)0x4002100C)
 
-GPIOC->ODR |= (1<<13);
+GPIOC_ODR |= (1<<13);
 Delay(1000000);
-GPIOC->ODR &= ~(1<<13);
+GPIOC_ODR &= ~(1<<13);
 Delay(1000000);
 ```
 ## Button Led
