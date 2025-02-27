@@ -46,7 +46,9 @@ RCC_APB2ENR |= (1<<4);
   ![image](https://github.com/user-attachments/assets/ca93551a-6430-4656-9cac-714f095f963e)
 
 - Để blink Led trên PortC 13, ta sẽ sử dụng thanh ghi CRH, định nghĩa thanh ghi GPIOC_CRH
-`#define GPIOC_CRH *((unsigned int*)0x40021004)` 
+```
+#define GPIOC_CRH *((unsigned int*)0x40021004)
+```
 - Ta sẽ set cặp bit CNF13 xuống 0 và MODE13 lên 1.
 ```
 GPIOC_CRH &= ~((1<<23) | (1<<22));
