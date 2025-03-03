@@ -14,4 +14,13 @@
 - Prescaler: bộ chia tần số, chia nhỏ bộ xung nhịp gốc, điều chỉnh sau bao nhiêu lần dao động xung nhịp thì bộ timer đếm lên một lần
 - Auto-reload register(ARR): Set giá trị để khi timer đếm quá sẽ bị tràn và reset lại bộ đếm.
 - Timer modes: up-counting mode(đếm từ 0 lên ARR), down-counting mode (đếm từ ARR xuống 0), center-aligned mode (đếm từ 0 lên ARR rồi đếm ngược xuống 0)
-
+```
+	TIM_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1; 
+	TIM_InitStruct.TIM_Prescaler = 7200 - 1;
+	TIM_InitStruct.TIM_Period = 0xFFFF;
+	TIM_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+```
+- TIM_ClockDivision: bộ chia xung clock
+- TIM_Prescaler: bộ chia tần prescaler
+- TIM_Period: Set giá trị tràn
+- TIM_CounterMode: Set chế độ đếm ARR.
