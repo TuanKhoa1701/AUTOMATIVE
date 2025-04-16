@@ -69,7 +69,7 @@ int main()
 				Delay_ms(1);
 				Sum += val[i];
 			}
-			Sum+= Sum/100;
+			Sum+= Sum/10;
 			Delay_ms(1);
 			Sum=0;
 	}
