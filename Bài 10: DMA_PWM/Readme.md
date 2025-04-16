@@ -12,6 +12,7 @@ STM32F103C8T6 có 2 bộ DMA. DMA1 bao gồm 7 kênh, DMA2 bao gồm 5 kênh:
 - Mỗi kênh có thể phục vụ cho nhiều ngoại vi khác nhau, nhưng không đồng thời.
 - Có mức ưu tiên để lập trình cho các kênh
 Có thể sử dụng ngắt DMA với 5 cờ báo ngắt (DMA Half Transfer, DMA Transfer complete, DMA Transfer Error, DMA FIFO Error, Direct Mode Error).
+
 ![image](https://github.com/user-attachments/assets/ce24bb88-583c-4032-aceb-319d579e8a05)
 
 DMA có 2 chế độ hoạt động là normal và circular:
@@ -34,7 +35,8 @@ Các tham số cho bộ DMA được cấu hình trong struct DMA_InitTypeDef. G
 Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation) được sử dụng để chỉ định góc mà động cơ servo sẽ xoay đến. Tín hiệu PWM có hai yếu tố quan trọng:
 - Tần số: Là số lần tín hiệu lặp lại trong một giây. Đối với servo, tần số thông thường là 50Hz (tức là, chu kỳ lặp lại sau mỗi 20ms).
 - Độ rộng xung (Pulse Width): Là thời gian tín hiệu ở mức cao trong mỗi chu kỳ. Độ rộng xung thường được đo bằng microsecond (µs) và quyết định góc mà servo sẽ xoay đến. Tỉ lệ độ rộng xung với chu kì xung gọi là chu kì nhiệm vụ (Duty Cycle).
-- ![image](https://github.com/user-attachments/assets/fb29a449-6ce0-40f9-996a-3eac05f6fa4b)
+- 
+ ![image](https://github.com/user-attachments/assets/fb29a449-6ce0-40f9-996a-3eac05f6fa4b)
 
 ## Cấu hình trong STM32F103C8T6
 Ta phải cấu hình chân chế độ AF_PP để gán chân GPIO với 1 kênh của timer mà ta cấu hình chế độ PWM.
