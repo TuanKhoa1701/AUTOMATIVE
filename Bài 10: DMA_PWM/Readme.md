@@ -62,6 +62,7 @@ Gọi hàm TIM_Cmd(); để cho phép Timer hoạt động.
 	TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
 	TIM_Cmd(TIM2);
 ```
+Để thay đổi độ rộng xung xuất ra, sử dụng hàm TIM_SetComparex(TIMx, pulseWidth); với Timer sử dụng là TIMx và độ rộng pulseWidth.
 
 
 
