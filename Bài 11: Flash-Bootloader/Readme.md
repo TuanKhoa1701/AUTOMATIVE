@@ -60,13 +60,16 @@ void Flash_Erase(uint32_t address, uint32_t data) {
 - Kiểm tra cờ BSY để đợi quá trình ghi hoàn tất`while (FLASH->SR & FLASH_SR_BSY) {}`
 ## Bootloader
 - Bootloader là một chương trình và là chương trình đầu tiên chạy khi Chip hoạt động.
-- Nhiệm vụ của Bootloader là kiểm tra các điều kiện để lựa chọn thực thi một trong các chương trình: Firmware update mới nhất, Firmware được nạp vào do hãng cung cấp trước khi xuất ra thị trường hoặc Current Firmware bản Firmware hiện tại đang chạy mỗi khi CPU reset. 
+- Nhiệm vụ của Bootloader là kiểm tra các điều kiện để lựa chọn thực thi một trong các chương trình: Firmware update mới nhất, Firmware được nạp vào do hãng cung cấp trước khi xuất ra thị trường hoặc Current Firmware bản Firmware hiện tại đang chạy mỗi khi CPU reset.
+  
 Hoạt động của CPU được mô tả như sau:
 - Bắt đầu, hoặc mỗi khi CPU reset, PC nhảy đến địa chỉ bắt đầu (với boot 0-0 là thực thi vùng nhớ tại Flash, PC-> 0x08000000) , đây là vị trí lưu chương trình bootloader. 
 - Lấy địa chỉ của App Current được lưu trên Flash.
 - Hàm boot nhảy đến vị trí lưu App Current.
 - Thực thi Firmware tại vị trí nhảy đến.
 - Lặp lại mỗi khi khởi động hoặc có Reset.
+
+Hàm Boot
 ```
 int main(){
 	RCC_DeInit();
