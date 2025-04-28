@@ -123,9 +123,9 @@ int main()
 		DMA_Config();
 
     while (1) {
-        val = ADC_GetConversionValue(ADC1); // Ð?c ADC th? công
-				while (!DMA_GetFlagStatus(DMA1_FLAG_TC3)); // Ch? DMA truy?n xong
+        val = ADC_GetConversionValue(ADC1); 
+	while (!DMA_GetFlagStatus(DMA1_FLAG_TC3)); 
         DMA_ClearFlag(DMA1_FLAG_TC3);
-        Delay_ms(50); // Ð?i d? Slave x? lý
+        Delay_ms(50); 
     }
 	}
