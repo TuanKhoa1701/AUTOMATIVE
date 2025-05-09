@@ -85,9 +85,14 @@ Cấu trúc:
   - Bit r0, r1(hai bit dự trữ): phải được truyền là recessive bit bởi bộ truyền nhưng không quan tâm đến 2 bit này.
 - Data Field: Chứa dữ liệu thực tế cần truyền.
 - CRC Field (Cyclic Redundancy Check): Dùng để phát hiện lỗi trong quá trình truyền thông qua mạng.
+  
+  ![image](https://github.com/user-attachments/assets/8db4b79a-3ba2-4bab-b003-dfaafc4b8a05)
+
   - CRC Sequence gồm 15 bit CRC tuần tự.
   - CRC Delimiter: là 1 recessive bit làm nhiệm vụ phân cacshhs trường CRC với ACK
 - ACK Field (Acknowledgment): Node nhận sẽ gửi tín hiệu ACK
+  ![image](https://github.com/user-attachments/assets/8c6e1ab3-c8e2-4f74-a9de-d5232527d94a)
+
   - ACK Slot: có độ dài 1 bit, Node truyền dữ liệu sẽ truyền bit này là recessive. Khi một hoặc nhiều Node nhận chính xác thông điệp( không có lỗi và đã so sánh với CRC Sequence trùng khớp) thì nố sẽ báo lại cho bộ truyền bằng cách truyền ra 1 dominant bit này vị trí ACK Slot để ghi đè lên recessive bit của bộ truyền.
   - ACK Delimiter: có độ dài 1 bit, nó luôn là một recessive bit.Như vậy ACK bit luon đặt giữa 2 recessive bit của CRC Delimiter và ACK Delimiter. 
 - EOF là 7 recessive để kết thúc frame.
