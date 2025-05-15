@@ -1,5 +1,8 @@
 # LIN
 ## Lý thuyết 
+
+![image](https://github.com/user-attachments/assets/8337594c-5597-4ee3-ac43-0fab0b9a455e)
+
 - Giao thức LIN (Local Interconnect Network) nhằm giảm thiểu sự phức tạp và chi phí trong việc truyền thông giữa các thiết bị điện tử đơn giản trong xe.
 - LIN thường được sử dụng trong các ứng dụng điều khiển các chức năng không an toàn của xe như điều khiển cửa sổ, đèn, gương, và điều hòa không khí
 ## Đặc điểm chính của LIN
@@ -9,6 +12,9 @@
 - Master có dữ liệu từ Slave sẽ gửi lên bus CAN để đi tới các LIN khác
 - IN sử dụng giao thức UART để truyền/nhận dữ liệu, với khung truyền dữ liệu sẽ là 1 start, 8 data, 1 hoặc 2 .
 ## Cấu trúc khung truyền:
+
+![image](https://github.com/user-attachments/assets/99c817f5-6e6f-421b-b72a-7b3f77cfa856)
+
 1. Break Field (>= 13 bit):
 -  Phần đầu tiên của khung truyền LIN, bao gồm một chuỗi các bit 0 dài hơn một ký tự truyền thông thường (ít nhất 13 bit). Khi phát ra các node sẽ dừng lại để lắng nghe.
 - Nó có vai trò như một tín hiệu báo hiệu cho các node slave biết rằng một khung truyền mới sắp bắt đầu.
@@ -36,6 +42,9 @@ Enhanced Checksum:
   - Được sử dụng trong các phiên bản LIN mới hơn và bao gồm cả byte ID trong phép tính checksum.
   - Phương pháp này cung cấp mức độ bảo mật cao hơn cho dữ liệu, đặc biệt là khi byte ID có vai trò quan trọng trong việc xác định loại thông điệp
   ## Chi tiết quá trình truyền thông LIN
+  
+![image](https://github.com/user-attachments/assets/c749e91b-ce77-4cb0-af6a-ef597d7c423e)
+
   - Dựa trên cơ chế polling, nghĩa là node master sẽ điều khiển toàn bộ quá trình truyền thông bằng cách gửi các khung điều khiển (header) đến các node slave
 - Master gửi Header: Node master gửi khung điều khiển (Header), bao gồm:
   - Break Field: Tín hiệu báo hiệu bắt đầu khung.
