@@ -69,9 +69,7 @@ CAN có 2 cơ chế để chống nhiễu tốt: một là dùng tín hiệu vi 
 ## Khung truyền của CAN
 1. Data Frame:
 
-![image](https://github.com/user-attachments/assets/2ea1a4db-edca-4626-bd6c-9794f5ae65a8)
-
-![image](https://github.com/user-attachments/assets/c7c1fe51-a3f5-44e4-9320-ea24f20607af)
+![image](https://github.com/user-attachments/assets/227b22b6-81d4-4858-91ab-dca9826b64bb)
 
 - Khung phổ biến nhất trong CAN, dùng để truyền dữ liệu giữa các node với nhau.
 Cấu trúc:
