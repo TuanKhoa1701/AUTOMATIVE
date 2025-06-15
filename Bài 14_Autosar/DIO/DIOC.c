@@ -1,25 +1,6 @@
 #include "DIO.h"
-Dio_LevelType DIO_ReadChannel(Dio_ChannelType ChannelId)
-{
-    GPIO_TypeDef *GPIO_Port;
-    uint8_t GIPO_Pin;
 
-    GPIO_Port = GPIO_GetPort(ChannelId);
-    if(GPIO_Port == NULL)
-    {
-        Det_ReportError(DIO_MODULE_ID, 0, DIO_READCHANNEL_ID, DIO_E_PARAM_INVALID_CHANNEL);
-        return STD_LOW; // Return a default value or handle error appropriately
-    }
-    GIPO_Pin = GPIO_GetPin(ChannelId);
-    if(Read_InputDataBit(GPIO_Port, GIPO_Pin) == STD_HIGH)
-    {
-        return STD_HIGH;
-    }
-    else
-    {
-        return STD_LOW;
-    }
-}
+
 void DIO_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level)
 {
     GPIO_TypeDef *GPIO_Port;

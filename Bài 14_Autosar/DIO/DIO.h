@@ -69,6 +69,7 @@
 #define DIO_CHANNEL_C14 (DIO_CHANNEL(GPIOC, 14))
 #define DIO_CHANNEL_C15 (DIO_CHANNEL(GPIOC, 15))
 
+
 #define DIO_CHANNEL_D0 (DIO_CHANNEL(GPIOD, 0))
 #define DIO_CHANNEL_D1 (DIO_CHANNEL(GPIOD, 1))
 #define DIO_CHANNEL_D2 (DIO_CHANNEL(GPIOD, 2))
@@ -94,6 +95,7 @@
 typedef uint8_t Dio_ChannelType;
 typedef uint8_t Dio_PortType;
 typedef uint8_t Dio_LevelType;
+
 typedef struct 
 {
     Dio_PortType port;
