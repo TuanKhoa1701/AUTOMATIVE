@@ -1,8 +1,23 @@
+/******************************************************* 
+ * @file: DIO.H
+ * @brief: Header file for Digital Input/Output (DIO) module in AUTOSAR.
+ * @details: Đây là tệp tiêu đề cho module DIO trong AUTOSAR, định nghĩa các kiểu dữ liệu và hàm liên quan đến việc đọc và ghi các kênh GPIO.
+ * @version: 1.0.0
+ * @author: Nguyen Tuan Khoa
+********************************************************/
+
 #ifndef DIO_H
 #define DIO_H
 
 // This file is part of the AUTOSAR standard.
 #include "Std_Types.h"
+
+/******************************************************* 
+ * ========================================================
+ * DIO Port Definitions
+ * ========================================================
+ * Macro xác định cổng GPIO dựa trên ID kênh.
+ ********************************************************/
 
 #define DIO_GetPort(ChannelId) (
     (((ChannelID) < 16) ? GPIOA : \
@@ -13,11 +28,33 @@
      ((ChannelID) < 96) ? GPIOF : \
      ((ChannelID) < 112) ? GPIOG : \
      ((ChannelID) < 128) ? GPIOH : NULL))
-)
+
+    /**********************************************************
+     * ========================================================
+     * DIO Pin Definitions
+     * ========================================================
+     * Macro xác định chân GPIO dựa trên ID kênh
+     **********************************************************/
+
 #define DIO_GetPin(ChannelId) (1<<(ChannelId) % 16)
+
+    /**************************************************** 
+     * ========================================================
+     * DIO Channel Definitions
+     * ========================================================
+     * Macro xác định ID kênh DIO dựa trên cổng GPIO và chân.
+     ********************************************************/
 
 #define DIO_CHANNEL(GPIO_Port, Pin) \
     ((GPIO_Port) * 16 + (Pin))
+
+    /*******************************************************
+     * ========================================================
+     * DIO Channel Definitions for Specific Channels
+     * ========================================================
+     * Các định nghĩa kênh DIO cụ thể cho từng chân GPIO.
+     ********************************************************/
+
 #define DIO_CHANNEL_A0 (DIO_CHANNEL(GPIOA, 0))
 #define DIO_CHANNEL_A1 (DIO_CHANNEL(GPIOA, 1))
 #define DIO_CHANNEL_A2 (DIO_CHANNEL(GPIOA, 2))
@@ -87,23 +124,87 @@
 #define DIO_CHANNEL_D14 (DIO_CHANNEL(GPIOD, 14))
 #define DIO_CHANNEL_D15 (DIO_CHANNEL(GPIOD, 15))
 
+/**********************************************************
+ * ========================================================
+ * DIO Port Definitions
+ * ======================================================== 
+ * Các định nghĩa cổng DIO.
+ **********************************************************/
 
 #define DIO_PORT_A 0
 #define DIO_PORT_B 1
 #define DIO_PORT_C 2
 #define DIO_PORT_D 3
+
+/**********************************************************
+ * ========================================================
+ * Định nghĩa kiểu dữ liệu cho DIO Driver
+ * ========================================================
+ * @typedef Dio_ChannelType
+ * @brief kieu dữ liệu đại diện cho một kênh DIO.
+ * @details kiểu được định danh cho một pin cụ thể.
+ **********************************************************/
+
 typedef uint8_t Dio_ChannelType;
+
+/**********************************************************
+ * ======================================================== 
+ * Định nghĩa kiểu dữ liệu cho Port DIO
+ * ========================================================
+ * @typedef Dio_PortType
+ * @brief kieu dữ liệu đại diện cho một cổng DIO.
+ * @details kiểu này được sử dụng để xác định cổng GPIO mà kênh DIO thuộc về.
+ **********************************************************/
+
 typedef uint8_t Dio_PortType;
+
+/**********************************************************
+ * ========================================================
+ * Định nghĩa kiểu dữ liệu cho DIO Port Level
+ * ========================================================
+ * @typedef Dio_PortLevelType
+ * @brief kieu dữ liệu đại diện cho mức độ của một cổng DIO.
+ * @details kiểu này được sử dụng để đọc hoặc ghi mức độ của toàn bộ cổng GPIO.
+ **********************************************************/
+
 typedef uint8_t Dio_LevelType;
+
+/**********************************************************
+ * ========================================================
+ * Định nghĩa kiểu dữ liệu cho DIO Channel Group
+ * ========================================================
+ * @typedef Dio_ChannelGroupType
+ * @brief kiểu dữ liệu đại diện cho một nhóm kênh DIO.
+ * @details kiểu này được sử dụng để xác định một nhóm các kênh DIO trong cùng một cổng.
+ **********************************************************/
 
 typedef struct 
 {
     Dio_PortType port;
     uint16_t mask;
     uint8_t offset;
-}
- Dio_ChannelGroupType;
+} Dio_ChannelGroupType;
+
+/**********************************************************
+ * ========================================================
+ * Định nghĩa kiểu dữ liệu cho DIO Port Level
+ * ========================================================
+ * @typedef Dio_PortLevelType
+ * @brief kieu dữ liệu đại diện cho mức độ của một cổng DIO.
+ * @details kiểu này được sử dụng để đọc hoặc ghi mức độ của toàn bộ cổng GPIO.
+ **********************************************************/
+
 typedef uint8_t Dio_LevelType;
+
+/**********************************************************
+ * ========================================================
+ * Định nghĩa kiểu dữ liệu cho DIO Port Level
+ * ========================================================
+ * @typedef Dio_PortLevelType
+ * @brief kieu dữ liệu đại diện cho mức độ của một cổng DIO.
+ * @details kiểu này được sử dụng để đọc hoặc ghi mức độ của toàn bộ cổng GPIO.
+ **********************************************************/
+
 typedef uint16_t Dio_PortLevelType;
 
 
