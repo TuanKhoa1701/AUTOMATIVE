@@ -1,6 +1,12 @@
 #ifndef _ADC_H_
 #define _ADC_H_ 
 
+/***************************************************************************
+ * @file ADC.h
+ * @brief têp định nghĩa các kiểu dữ liệu và khai báo các hàm của driver ADC
+ * @details tệp này chứa các khai báo của ADC theo chuẩn Autosar.
+ * @version 1.0.0
+****************************************************************************/
 /***************************************************************** 
     * @brief kiểu dữ liệu cho kênh ADC
     * @details Đây là kiểu dữ liệu dùng để xác định các kênh ADC trên vi điều khiển.
